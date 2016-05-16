@@ -1,0 +1,9 @@
+all:integral
+sasmintegr.o:asmintegral.asm
+	nasm -f elf32 -o asmintegral.o asmintegral.asm
+integr:integral.o asmintegral.o
+	gcc -m32 -o integral integral.o asmintegral.o
+integr.o:integral.c 
+	gcc -m32 -std=c11 -c -o integral.o integral.c
+clean:
+	rm *.o
